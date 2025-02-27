@@ -6,7 +6,9 @@ In this work, we introduce **UniCodec**, a unified audio codec with a single cod
 
 To achieve this, we propose a **partitioned domain-adaptive codebook** method with **domain Mixture-of-Experts** strategy to capture the distinct characteristics of each audio domain. Furthermore, to enrich the semantic density of the codec **without auxiliary modules**, we propose a self-supervised mask prediction modeling approach. 
 
-![overview](https://github.com/Jiang-Yidi/UniCodec/blob/main/overview.png)
+<div align=center>
+<img src="https://github.com/Jiang-Yidi/UniCodec/blob/main/overview.png" width="50%">
+</div>
 
 As a single unified codec model, UniCodec achieves **superior subjective reconstruction performance** while maintaining a **high compression rate** in all three domains (speech/music/sound).
 
