@@ -1,4 +1,8 @@
-# UniCodec: Unified Audio Codec with Single Domain-Adaptive Codebook
+# UniCodec
+
+> [**UniCodec: Unified Audio Codec with Single Domain-Adaptive Codebook**](https://arxiv.org/abs/2502.20067)<br>
+> [Yidi Jiang](https://scholar.google.com/citations?user=le6gC58AAAAJ&hl=en&oi=ao), [Qian Chen](https://scholar.google.com/citations?user=8eosmSQAAAAJ&hl=en&oi=ao), [Shengpeng Ji](https://scholar.google.com/citations?user=zuRaB-oAAAAJ&hl=en&oi=ao), [Yu Xi](https://scholar.google.com/citations?user=dszdUXYAAAAJ&hl=zh-CN), [Wen Wang](https://scholar.google.com.hk/citations?user=85Tj1OwAAAAJ&hl=en), [Chong Zhang](https://scholar.google.com.sg/citations?user=nqcBaoYAAAAJ&hl=en), [Xianghu Yue](https://scholar.google.com/citations?user=jWNJCDIAAAAJ&hl=en), [Shiliang Zhang](https://scholar.google.com/citations?user=BcWMSE4AAAAJ&hl=zh-CN), [Haizhou Li](https://colips.org/~eleliha/)<br>
+> National University of Singapore; Tongyi Speech Lab<br>
 
 In this work, we introduce **UniCodec**, a unified audio codec with a single codebook to support multi-domain audio data, including **speech**, **music**, and **sound**. 
 
