@@ -7,10 +7,10 @@ from audiotools import STFTParams
 from encodec.utils import convert_audio
 import torchaudio
 import torch
-from vocos.pretrained import Vocos
+from decoder.pretrained import Unicodec
 import time
 import logging
-from vocos.modules import safe_log
+from decoder.modules import safe_log
 
 
 class MultiScaleSTFTLoss(nn.Module):
@@ -172,8 +172,8 @@ os.system("mkdir -p %s"%(tmptmp))
 config_path = "/nfs/jiangyidi/wavtokenizer_semantic/configs/wavtokenizer_largedata_frame75_10s_nq1_code16384_dim512.yaml"
 model_path = "/nfs/jiangyidi/wavtokenizer_semantic/result/train/wavtokenizer_largedata_frame75_10s_nq1_code16384_dim512/lightning_logs/version_18/checkpoints/vocos_checkpoint_epoch=2_step=720000_val_loss=7.7856.ckpt"
 
-vocos = Vocos.from_pretrained0802(config_path, model_path)
-vocos = vocos.to(device1)
+codec = Unicodec.from_pretrained0802(config_path, model_path)
+codec = codec.to(device1)
 
 with open(input_path,'r') as fin:
     x=fin.readlines()
@@ -199,10 +199,10 @@ for i in range(len(x)):
         wav=wav.to(device1)
         print(count)
 
-        features,discrete_code= vocos.encode_infer(wav, domain, bandwidth_id=bandwidth_id)
+        features,discrete_code= codec.encode_infer(wav, domain, bandwidth_id=bandwidth_id)
         # features_all.append(features)
 
-        audio_out = vocos.decode(features, bandwidth_id=bandwidth_id)   
+        audio_out = codec.decode(features, bandwidth_id=bandwidth_id)   
 
         ################MEL LOSS & STFT LOSS
         melloss = mel_loss(wav.cpu(),audio_out.cpu())
