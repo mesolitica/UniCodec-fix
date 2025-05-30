@@ -17,3 +17,32 @@ To achieve this, we propose a **partitioned domain-adaptive codebook** method wi
 As a single unified codec model, UniCodec achieves **superior subjective reconstruction performance** while maintaining a **high compression rate** in all three domains (speech/music/sound).
 
 ![main](https://github.com/Jiang-Yidi/UniCodec/blob/main/main%20result.png)
+
+## Installation
+
+```bash
+conda create -n unicodec python=3.9
+conda activate unicodec
+pip install -r requirements.txt
+```
+
+## Train
+```bash
+python train.py fit --config ./configs/xxx.yaml
+```
+
+## Infer
+```bash
+python infer_audio.py
+```
+
+## Citation
+
+```
+@article{jiang2025unicodec,
+  title={UniCodec: Unified Audio Codec with Single Domain-Adaptive Codebook},
+  author={Jiang, Yidi and Chen, Qian and Ji, Shengpeng and Xi, Yu and Wang, Wen and Zhang, Chong and Yue, Xianghu and Zhang, ShiLiang and Li, Haizhou},
+  journal={arXiv preprint arXiv:2502.20067},
+  year={2025}
+}
+```
