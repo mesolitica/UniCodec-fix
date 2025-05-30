@@ -32,6 +32,8 @@ python train.py fit --config ./configs/xxx.yaml
 ```
 
 ## Infer
+Model checkpoint [🤗](https://huggingface.co/Yidiii/UniCodec_ckpt/) is available in Huggingface. 
+
 ```bash
 python infer_audio.py
 ```
