@@ -169,8 +169,8 @@ os.system("rm -r %s"%(tmptmp))
 os.system("mkdir -p %s"%(tmptmp))
 
 # 自己数据模型加载
-config_path = "/nfs/jiangyidi/wavtokenizer_semantic/configs/wavtokenizer_largedata_frame75_10s_nq1_code16384_dim512.yaml"
-model_path = "/nfs/jiangyidi/wavtokenizer_semantic/result/train/wavtokenizer_largedata_frame75_10s_nq1_code16384_dim512/lightning_logs/version_18/checkpoints/vocos_checkpoint_epoch=2_step=720000_val_loss=7.7856.ckpt"
+config_path = "./configs/***.yaml"
+model_path = "./checkpoints/***.ckpt"
 
 codec = Unicodec.from_pretrained0802(config_path, model_path)
 codec = codec.to(device1)
