@@ -21,7 +21,7 @@ As a single unified codec model, UniCodec achieves **superior subjective reconst
 ## Installation
 
 ```bash
-pip3 install -e .
+pip3 install git+https://github.com/mesolitica/UniCodec-fix
 ```
 
 ## Encode decode
@@ -46,6 +46,8 @@ features = model.codes_to_features(discrete_code)
 
 audio_out = model.decode(features, bandwidth_id=bandwidth_id)
 ```
+
+Config and model also already mirrored at https://huggingface.co/huseinzol05/UniCodec-mirror
 
 ## Citation
 
