@@ -1,7 +1,7 @@
 seed_everything: 3407
 
 data:
-  class_path: decoder.dataset.VocosDataModule
+  class_path: unicodec.decoder.dataset.VocosDataModule
   init_args:
     train_params:
       filelist_path: ./data/train/finetune_data
@@ -18,7 +18,7 @@ data:
       num_workers: 8
 
 model:
-  class_path: decoder.experiment.VocosEncodecExp
+  class_path: unicodec.decoder.experiment.VocosEncodecExp
   init_args:
     sample_rate: 24000
     initial_learning_rate: 5e-5
@@ -38,7 +38,7 @@ model:
     resume_config: 
     resume_model: 
     feature_extractor:
-      class_path: decoder.feature_extractors.EncodecFeatures
+      class_path: unicodec.decoder.feature_extractors.EncodecFeatures
       init_args:
         encodec_model: encodec_24khz
         bandwidths: [6.6, 6.6, 6.6, 6.6]
@@ -51,7 +51,7 @@ model:
         mask: false
 
     backbone:
-      class_path: decoder.models.VocosBackbone
+      class_path: unicodec.decoder.models.VocosBackbone
       init_args:
         input_channels: 512
         dim: 768
@@ -60,7 +60,7 @@ model:
         adanorm_num_embeddings: 4  # len(bandwidths)
 
     head:
-      class_path: decoder.heads.ISTFTHead
+      class_path: unicodec.decoder.heads.ISTFTHead
       init_args:
         dim: 768
         n_fft: 1280  #4*hop_length
@@ -84,7 +84,7 @@ trainer:
         save_top_k: 100
         save_last: true
         # every_n_train_steps: 5000
-    - class_path: decoder.helpers.GradNormCallback
+    - class_path: unicodec.decoder.helpers.GradNormCallback
 
   # Lightning calculates max_steps across all optimizer steps (rather than number of batches)
   # This equals to 1M steps per generator and 1M per discriminator

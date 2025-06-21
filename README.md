@@ -21,21 +21,30 @@ As a single unified codec model, UniCodec achieves **superior subjective reconst
 ## Installation
 
 ```bash
-conda create -n unicodec python=3.9
-conda activate unicodec
-pip install -r requirements.txt
+pip3 install -e .
 ```
 
-## Train
-```bash
-python train.py fit --config ./configs/xxx.yaml
-```
+## Encode decode
 
-## Infer
-Model checkpoint [🤗](https://huggingface.co/Yidiii/UniCodec_ckpt/) is available in Huggingface. 
+```python
+from encodec.utils import convert_audio
+from unicodec.decoder.pretrained import Unicodec
+import torchaudio
+import torch
+config = 'configs/unicodec_frame75_10s_nq1_code16384_dim512_finetune.yaml'
 
-```bash
-python infer_audio.py
+# !wget https://huggingface.co/Yidiii/UniCodec_ckpt/resolve/main/unicode.ckpt
+model = Unicodec.from_pretrained0802(config, 'unicode.ckpt')
+
+wav, sr = torchaudio.load('husein-assistant-trim.mp3')
+wav = convert_audio(wav, sr, 24000, 1) 
+bandwidth_id = torch.tensor([0])
+
+# 2 for audio
+_, discrete_code = model.encode_infer(wav, '2', bandwidth_id=bandwidth_id)
+features = model.codes_to_features(discrete_code)
+
+audio_out = model.decode(features, bandwidth_id=bandwidth_id)
 ```
 
 ## Citation
