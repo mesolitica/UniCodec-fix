@@ -40,7 +40,7 @@ wav, sr = torchaudio.load('husein-assistant-trim.mp3')
 wav = convert_audio(wav, sr, 24000, 1) 
 bandwidth_id = torch.tensor([0])
 
-# 2 for audio
+# 0 for speech, 1 for music, 2 for audio based on https://github.com/mesolitica/UniCodec-fix/blob/main/encoder/quantization/simvq_moe.py#L161
 _, discrete_code = model.encode_infer(wav, '2', bandwidth_id=bandwidth_id)
 features = model.codes_to_features(discrete_code)
 
